@@ -18,6 +18,7 @@ function single(nums){
             twice[nums[i]]=1
         }
     }
+    console.log(twice);
     let numsObj = Object.keys(twice);
     for(let i of numsObj){
         if(twice[i.toString()]==1){
@@ -33,7 +34,7 @@ function single(nums){
 function missingOpt(arr){
     let ans =0;
     for(let i=0;i<arr.length;i++){
-        ans = ans ^ arr[i];
+        ans = ans ^ arr[i]; // XOR ans=ans ^ arr[i]
     }
     return ans;
 }

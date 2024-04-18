@@ -22,7 +22,7 @@ function duplicate(arr){
     }
     return uniquesArr.length
 }
-// console.log(duplicate([1,1,1,2,2,3,3,3,3,4,4]));
+//console.log(duplicate([1,1,1,2,2,3,3,3,3,4,4]));
 
 // Optimal sol
 
@@ -36,7 +36,39 @@ function duplicateOpt(arr){
     }
     return j+1;
 }
-console.log(duplicateOpt([1,1,1,2,2,3,3,3,3,4,4]));
+//console.log(duplicateOpt([1,1,1,2,2,3,3,3,3,4,4]));
 
 // TC- O(N) since we are looping through once
 // Sp Comp- O(1) No extra space of n length;
+// let arr = [1,2,3,4]
+// let set = new Set(arr);
+// let obj = {name:"afzal",age:'28'}
+// set.add(5);
+// set.add(obj);
+// console.log(set.size);
+
+let arr = [1,1,2,3,4,5,5,8,9];
+// function remove(arr){
+//     let i=0;
+//     for(let j=1;j<arr.length;j++){
+//         if(arr[i]!==arr[j]){
+//             i++;
+//             arr[i]=arr[j]
+//         }
+//     }
+//     console.log(arr,i+1);
+// }
+// remove(arr)
+
+function sum(n){
+    let acc = n;
+    return function adder(next){
+        if(next==undefined){
+            return acc;
+        }
+        acc+=next;
+        return adder;
+    }
+}
+
+console.log(sum(100)());

@@ -26,7 +26,7 @@
 //     try {
 //         let usrs = await users;
 //         let usr = await usrs.json();
-//         console.log(usr);
+//         console.log("useresdata=",usr);
 //     } catch (error) {
 //         console.log("err-",error);
 //     }
@@ -79,7 +79,7 @@
 //         console.log("in second");
 //         reject("second res");
 //     }))
-//     // .then(r=>console.log("l-81-res",r)).catch(e=>console.log("l-81-rej",e))
+//     .then(r=>console.log("l-81-res",r)).catch(e=>console.log("l-81-rej",e))
 // })
 // .then(res=>console.log("l-83",res))
 // .catch(er=>console.log("er-83",er));
@@ -92,11 +92,11 @@
 //     }
 //  }
 //  let val = obj1.z();
-//  console.log(val);
+//  console.log(val); //43 hello w
 
 // (function (){
 //     console.log("logged");
-// })()
+// })() // logged
 
 // var abc = 9;
 
@@ -114,13 +114,13 @@
 
 
 
-// myObject.myMethod(); // 9
+// myObject.myMethod(); // 123
 
 
 
 //    fetch("https://dummy.restapiexample.com/api/v1/employees")
 //    .then(res=>res.json())
-//    .then(data=>console.log(data))
+//    .then(data=>console.log("first=",data)) //log data
 //    .catch(err=>console.log(err))
 
 // async function getData(){
@@ -133,16 +133,17 @@
 //             },5000)
 //         })
 //     } catch (error) {
-//         console.log(error);
+//         console.log("ferr",error); // datas
 //     }
 // }
 
 // (async ()=>{
 //     try {
 //         let res = await getData();
-//         console.log(res);   
+//         console.log("try-",res);   
 //     } catch (error) {
-//         console.log(error);
+//       console.log("no");
+// //        console.log("iner",error); //log
 //     }
 // })();
 
@@ -193,3 +194,73 @@
 // }
 // console.log(arr);
 
+
+// let obj = {
+//     name : "Ahmad",
+//     prop:{
+//         getName : function() {
+//             return this.name
+//         },
+//         getName2: ()=> this.name
+//     },
+//     getName3: function() {
+//         return console.log(this);
+//     },
+//     getName4 : ()=>console.log(this)
+// }
+
+// // console.log(obj.prop.getName());
+// // console.log(obj.prop.getName2());
+// // console.log(obj.getName3());
+// console.log(obj.getName4());
+
+// function updateBrand(obj) {
+//     // Mutating the object is visible outside the function
+//     obj.brand = "Toyota";
+//     // Try to reassign the parameter, but this won't affect
+//     // the variable's value outside the function
+//     obj = null;
+//   }
+  
+//   const car = {
+//     brand: "Honda",
+//     model: "Accord",
+//     year: 1998,
+//   };
+  
+//   console.log(car.brand); // Honda
+  
+//   // Pass object reference to the function
+//   updateBrand(car);
+  
+//   // updateBrand mutates car
+//   console.log(car.brand,car); // Toyota
+
+// let pr = new Promise((res,rej)=>{
+//   return new Promise((re,rj)=>{
+//     setTimeout(()=>{
+//       re("hello")
+//     },2000)
+//   }).then(r=>r);
+// })
+// pr.then(res=>res).then(r=>console.log(r))
+// .catch(err=>console.log("err-",err));
+
+let pr = new Promise((res,rej)=>{
+  setTimeout(()=>{
+    res(new Promise((resolve, reject) => {
+      resolve("hello");
+    }).catch(err=>err))
+  },2000)
+})
+console.log(pr);
+
+let da = async ()=>{
+  try {
+    let data =await pr;
+    console.log(data);    
+  } catch (error) {
+    console.log("reject",error);
+  }
+}
+da();
